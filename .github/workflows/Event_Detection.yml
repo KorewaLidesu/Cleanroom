@@ -17,10 +17,13 @@ jobs:
   event_handle:
     name: Start Event
     runs-on: ubuntu-latest
-
+  
     steps:
+    - uses: actions/checkout@v3
     - name: Start Releasing Installer
-      if: 1 == 2 #Event trigger
-      uses: |
-        actions/checkout@v3
-        ./.github/workflows/BuildAndRelease.yml
+      if: 1 == 2
+      run: echo "Event=release_event" >> $GITHUB_ENV
+
+  start_release:
+    if: $Event == 'release_event'
+    uses: ./.github/workflows/BuildAndRelease.yml
