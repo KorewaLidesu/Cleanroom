@@ -27,5 +27,5 @@ jobs:
       run: echo "EVENT=release_event" >> $GITHUB_ENV
 
   start_release:
-    if: ${{ env.EVENT == 'release_event' }}
+    if: ${{ env.EVENT == 'releash_event' }}
     uses: ./.github/workflows/BuildAndRelease.yml
