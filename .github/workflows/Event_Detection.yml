@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
     - name: Start Releasing Installer
-      if: 1 == 1 #Event trigger
-      uses: ./.github/workflows/BuildAndRelease.yml
+      if: 1 == 2 #Event trigger
+      uses: |
+        actions/checkout@v3
+        ./.github/workflows/BuildAndRelease.yml
