@@ -27,7 +27,7 @@ jobs:
     - name: Detect Release Event
       id: release_event
       #if: 1 == 1
-      run: echo "job=ok" >> $env:GITHUB_OUTPUT
+      run: echo "job=ok" >> $GITHUB_OUTPUT
 
   start_release:
     name: Start Release Event
