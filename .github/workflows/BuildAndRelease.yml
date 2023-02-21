@@ -36,9 +36,9 @@ jobs:
       run: ./gradlew --stop
         
     - name: Build Forge Jar File
-      run: .\gradlew universalJar
+      run: ./gradlew universalJar
     - name: Build Forge Installer
-      run: .\gradlew installerJar
+      run: ./gradlew installerJar
         
     - name: Release Forge Installer
       uses: actions/upload-artifact@v3.1.2
