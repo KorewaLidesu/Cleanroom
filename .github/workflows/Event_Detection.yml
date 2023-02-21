@@ -32,5 +32,7 @@ jobs:
       run: echo "EVENT=release_event" >> $env:GITHUB_OUTPUT
 
   start_release:
+    name: Start Release Event
+    needs: event_handle
     if: ${{ needs.event_handle.outputs.event == 'releash_event' }}
     uses: ./.github/workflows/BuildAndRelease.yml
