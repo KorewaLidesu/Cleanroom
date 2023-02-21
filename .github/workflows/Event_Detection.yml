@@ -26,11 +26,11 @@ jobs:
 
     - name: Detect Release Event
       id: release_event
-      if: 1 == 1 #TODO
+      #if: 1 == 1
       run: echo "job=ok" >> $env:GITHUB_OUTPUT
 
   start_release:
     name: Start Release Event
     needs: event_handle
-    if: ${{ needs.event_handle.outputs.release != '' }}
+    if: ${{ needs.event_handle.outputs.release == 'ok' }}
     uses: ./.github/workflows/BuildAndRelease.yml
