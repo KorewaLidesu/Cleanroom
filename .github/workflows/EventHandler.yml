@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  event_handle:
+  event_handler:
     name: Start Event
     runs-on: ubuntu-latest
 
@@ -31,6 +31,6 @@ jobs:
 
   start_release:
     name: Start Release Event
-    needs: event_handle
-    if: ${{ needs.event_handle.outputs.release == 'ok' }}
+    needs: event_handler
+    if: ${{ needs.event_handler.outputs.release == 'ok' }}
     uses: ./.github/workflows/BuildAndRelease.yml
