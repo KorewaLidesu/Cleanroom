@@ -19,20 +19,18 @@ jobs:
 
     #Map output to job
     outputs: 
-      event: ${{ steps.dummy.outputs.EVENT }}
+      release: ${{ steps.release_event.outputs.job }}
   
     steps:
     - uses: actions/checkout@v3
-    - name: Dummy output
-      id: dummy
-      run: echo "EVENT=no_job" >> $env:GITHUB_OUTPUT
 
     - name: Detect Release Event
+      id: release_event
       if: 1 == 1 #TODO
-      run: echo "EVENT=release_event" >> $env:GITHUB_OUTPUT
+      run: echo "job=ok" >> $env:GITHUB_OUTPUT
 
   start_release:
     name: Start Release Event
     needs: event_handle
-    if: ${{ needs.event_handle.outputs.event == 'releash_event' }}
+    if: ${{ needs.event_handle.outputs.release != '' }}
     uses: ./.github/workflows/BuildAndRelease.yml
