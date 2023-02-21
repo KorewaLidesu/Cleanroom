@@ -11,7 +11,7 @@ on:
     outputs:
       workflow_event:
         description: "Output the event"
-        value: ${{ jobs.job1.outputs.event }}
+        value: ${{ jobs.event_handle.outputs.event }}
 
 permissions:
   contents: read
