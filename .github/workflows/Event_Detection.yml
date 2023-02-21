@@ -8,10 +8,6 @@
 name: Event Handler
 on:
   push:
-    outputs:
-      workflow_event:
-        description: "Output the event"
-        value: ${{ jobs.event_handle.outputs.event }}
 
 permissions:
   contents: read
@@ -36,5 +32,5 @@ jobs:
       run: echo "EVENT=release_event" >> $env:GITHUB_OUTPUT
 
   start_release:
-    if: ${{ needs.job1.outputs.event == 'releash_event' }}
+    if: ${{ needs.event_handle.outputs.event == 'releash_event' }}
     uses: ./.github/workflows/BuildAndRelease.yml
