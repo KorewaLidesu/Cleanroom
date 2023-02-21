@@ -28,7 +28,7 @@ jobs:
       run: echo "EVENT=no_job" >> $env:GITHUB_OUTPUT
 
     - name: Detect Release Event
-      if: 1 == 2
+      if: 1 == 1 #TODO
       run: echo "EVENT=release_event" >> $env:GITHUB_OUTPUT
 
   start_release:
