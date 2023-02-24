@@ -33,10 +33,14 @@ jobs:
       run: chmod +x ./gradlew
         
     - name: Setup Forge env
-      run: ./gradlew setup --no-daemon
+      run: ./gradlew setup
+    - name: Stop Gradle daemon
+      run: ./gradlew --stop
       
-    - name: Build Forge Installer
-      run: ./gradlew installerJar --no-daemon
+    - name: Build Forge Universal Jar
+      run: ./gradlew universalJar
+    - name: Build Forge Installer Jar
+      run: ./gradlew installerJar
       
     - name: Upload Forge Universal
       uses: actions/upload-artifact@v3.1.2
